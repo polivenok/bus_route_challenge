@@ -150,24 +150,24 @@ with the IP of your docker VM*
 ### Solution
 
 Solution is based on using data structure (map or associative array) to allow us 
-easily to query whether departure and arrival station has direct bus connection.
+easily query whether departure and arrival station has direct bus connection.
 Map has station id as key and set of buses which passes this station as values. 
 This allows us to easily check if there is a direct bus by querying first all 
 buses passing departure station, then querying all buses passing arrival station 
-and if this sets intersect then we have bus that directly connects them.
+and if this sets intersect then we have bus(es) that directly connects them.
 More details can be found in RoutesService class.
-Considering that we prepared map with routes on app startup complexity of given 
-solution depends on map set retrieval with O(1) complexity and intersection 
+
+Considering that we prepared map with routes on app startup, complexity of given 
+solution depends on map/set operations with O(1) complexity and intersection 
 operation which based on AbstractCollection sources seems to be O(n), and in our 
 case n is number of buses for given station.
 
 Memory usage of map depends on how many buses will pass through each station, and
-considering given information doesn't seem to be a limitation with this approach.
-If memory is our main concern we should review algorithm as current one gives
-quite good performance even on large data sets.
+considering given information doesn't seem to be critical.
+If memory is our main concern we should review algorithm.
  
 Uses SpringBoot with simple controller, service and basic exception handler.
-Main scenarios is covered by Spring Boot Tests (integration tests)
+Main scenarios is covered by Spring Boot Tests (integration tests).
 Spring Actuator is also connected as it is good idea to have metrics and makes our 
 service more production ready.
 
@@ -175,6 +175,7 @@ Considering specific of current task there is almost no foundation for further
 extension and if I had information about other tasks and use cases then project 
 can be organised differently.
 
-Approach for logging based on AOP can be also introduced. If we want to provide public 
-API then documentation for REST services should be provided.
+Service lacks security. Approach for logging based on AOP can be also introduced.
+If we want to provide public API then documentation for REST services should 
+be provided.
 
