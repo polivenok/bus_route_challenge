@@ -13,17 +13,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties={"nonOptionArgs=src/test/resources/test.data"})
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, properties = {"nonOptionArgs=src/test/resources/test.data"})
 public class BusRouteChallengeApplicationTests {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Test
-	public void existingRouteTest() {
+    @Test
+    public void existingRouteTest() {
         DirectBusResponse response = restTemplate.getForObject("/direct?dep_sid={dep_sid}&arr_sid={arr_sid}", DirectBusResponse.class, 3, 6);
-		assertThat(response.isDirectRouteExists()).isEqualTo(true);
-	}
+        assertThat(response.isDirectRouteExists()).isEqualTo(true);
+    }
 
     @Test
     public void nonExistingRouteTest() {
