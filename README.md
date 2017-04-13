@@ -179,3 +179,9 @@ Service lacks security. Approach for logging based on AOP can be also introduced
 If we want to provide public API then documentation for REST services should 
 be provided.
 
+Current limits seems to be handled by running service on one machine, however
+requires some load testing. But for handling more data horizontal scaling and 
+appropriate algorithm for data processing should be considered (e.g. some variation 
+of map reduce, each node will process some part of data set and result will be 
+combined in the end).
+
