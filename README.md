@@ -154,12 +154,12 @@ easily query whether departure and arrival station has direct bus connection.
 Map has station id as key and set of buses which passes this station as values. 
 This allows us to easily check if there is a direct bus by querying first all 
 buses passing departure station, then querying all buses passing arrival station 
-and if this sets intersect then we have bus(es) that directly connects them.
+and if these sets intersect then we have bus(es) that directly connects them.
 More details can be found in RoutesService class.
 
 Considering that we prepared map with routes on app startup, complexity of given 
 solution depends on map/set operations with O(1) complexity and intersection 
-operation which based on AbstractCollection sources seems to be O(n), and in our 
+operation which found in AbstractCollection JDK sources seems to be O(n), and in our 
 case n is number of buses for given station.
 
 Memory usage of map depends on how many buses will pass through each station, and
