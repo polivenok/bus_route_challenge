@@ -44,9 +44,13 @@ public class RoutesService {
         Set<Integer> busesInDepartureStation = busesByStation.get(departureStationId);
         Set<Integer> busesInArrivalStation = busesByStation.get(arrivalStationId);
         if (busesInDepartureStation != null && busesInArrivalStation != null) {
-            //do intersection of sets, so we can have set which have buses which cross both departure and arrival stations
-            busesInDepartureStation.retainAll(busesInArrivalStation);
-            isDirectBusRouteExists = !busesInDepartureStation.isEmpty();
+            //do intersection of sets, find first bus which passes both stations
+            for (Integer stationId : busesInDepartureStation) {
+                if (busesInArrivalStation.contains(stationId)){
+                   isDirectBusRouteExists = true;
+                   break;
+                }
+            }
         }
 
         return isDirectBusRouteExists;
