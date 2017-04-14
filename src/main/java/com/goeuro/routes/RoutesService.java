@@ -8,7 +8,7 @@ import java.util.*;
 public class RoutesService {
     //map to group buses by station they pass, it is useful to check direct bus route
     //<stationId, [buses]>
-    private Map<Integer, Set<Integer>> busesByStation = new HashMap<>();
+    private final Map<Integer, Set<Integer>> busesByStation = new HashMap<>();
 
     /**
      * @param route The first integer represents the bus route id.
@@ -34,8 +34,8 @@ public class RoutesService {
     /**
      * Check whether there is a direct bus route between two station based on added routes
      *
-     * @param departureStationId
-     * @param arrivalStationId
+     * @param departureStationId id of department station
+     * @param arrivalStationId if of arrival station
      * @return true if there exists a bus route that connects the stations represented by departureStationId and arrivalStationId.
      * Otherwise direct_bus_route must be set to false
      */
